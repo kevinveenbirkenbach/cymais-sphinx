@@ -4,4 +4,6 @@ output/*
 !output/.gitkeep
 generated/*
 !generated/.gitkeep
+source/*
+!source/.gitkeep
 *__pycache__

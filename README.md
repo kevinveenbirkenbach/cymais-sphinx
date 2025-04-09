@@ -21,6 +21,16 @@ pkgmgr install cymais-sphinx
 
 ---
 
+## Commands
+
+To view all the available commands and options for starting and configuring the **CyMaIS Sphinx** tool, simply run the following command:
+
+```bash
+cymais-sphinx --help
+```
+
+This command provides an easy way to access all the options needed to work with **CyMaIS Sphinx** and manage the project’s documentation. Whether you're setting up the environment or generating documentation, the `--help` command will guide you through all available functionalities. 🚀
+
 ## Contributing
 
 Contributions are welcome! If you have any suggestions or encounter issues, feel free to open an issue or submit a pull request on [GitHub](https://github.com/kevinveenbirkenbach/cymais-sphinx).
