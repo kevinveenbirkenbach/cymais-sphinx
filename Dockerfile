@@ -1,4 +1,3 @@
-ARG DOCKER_PYTHON_VERSION
 FROM python:3.9-slim
 
 # The following is necessary because make can not copy files outside their directory
