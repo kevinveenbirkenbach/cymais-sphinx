@@ -1,15 +1,2 @@
-apt:
-  make
-  curl
-  pandoc
-pip:
-  myst-parser
-  sphinx
-  sphinxawesome-theme
-  docutils
-  sphinx-jinja
-  sphinxcontrib-yaml
-  pathspec
-  markdown2
 pkgmr:
-  cymais
+  - cymais

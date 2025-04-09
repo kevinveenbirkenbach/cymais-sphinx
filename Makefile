@@ -4,7 +4,7 @@
 SPHINX_EXEC_DIR			?= .
 
 # Directory from which the sources will be read
-SPHINX_SOURCE_DIR  		?= ../
+SPHINX_SOURCE_DIR  		?= $(shell pkgmgr path cymais)
 
 # Directory which contains the builded files
 SPHINX_OUTPUT_DIR   	?= ./output
@@ -23,16 +23,14 @@ SPHINX_GENERATED_DIR 	= $(SPHINX_OUTPUT_DIR)/../generated
 # Directory which contains the extracted requirement files
 SPHINX_REQUIREMENTS_DIR = $(SPHINX_EXEC_DIR)/requirements
 
-.PHONY: help install copy-images apidoc remove-generated html generate extract-requirements Makefile
+ASSETS_IMG=	$(SPHINX_SOURCE_DIR)/assets/img/
 
-extract-requirements:
-	@echo "Creating requirement files"
-	bash ./scripts/extract-requirements.sh "$(SPHINX_EXEC_DIR)/requirements.yml" "$(SPHINX_REQUIREMENTS_DIR)/apt.txt" "$(SPHINX_REQUIREMENTS_DIR)/pip.txt"
+.PHONY: help install copy-images apidoc remove-generated html generate Makefile
 
 # Copy images before running any Sphinx command (except for help)
 copy-images:
-	@echo "Copying images from ../assets/img/ to ./assets/img/..."
-	cp -vr ../assets/img/* ./assets/img/
+	@echo "Copying images from $(ASSETS_IMG) to ./assets/img/..."
+	cp -vr $(ASSETS_IMG)* ./assets/img/
 
 # Generate reStructuredText files from Python modules using sphinx-apidoc
 generate-apidoc:

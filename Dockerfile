@@ -22,9 +22,6 @@ RUN apt-get update && apt install -y make
 # Copy the project files into the container
 COPY ${SPHINX_SOURCE_DIR_RELATIVE} ${SPHINX_DOCKER_EXEC_DIR}
 
-# Build the requirement files
-RUN cd ${SPHINX_EXEC_DIR} && make extract-requirements
-
 # Install required packages
 RUN xargs -a ${SPHINX_REQUIREMENTS_DIR}/apt.txt apt install -y
 
