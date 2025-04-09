@@ -12,11 +12,6 @@ SPHINX_OUTPUT_DIR   	?= ./output
 # Args parsed to the sphinx-build command
 SPHINXOPTS         		?= -c $(SPHINX_EXEC_DIR)
 
-# CONSTANTS
-
-# Sphinx build command
-SPHINX_BUILD_COMMAND    = sphinx-build
-
 # Directory which contains the auto generated files
 SPHINX_GENERATED_DIR 	= $(SPHINX_OUTPUT_DIR)/../generated
 
@@ -25,7 +20,7 @@ SPHINX_REQUIREMENTS_DIR = $(SPHINX_EXEC_DIR)/requirements
 
 ASSETS_IMG=	$(SPHINX_SOURCE_DIR)/assets/img/
 
-.PHONY: help install copy-images apidoc clean-ignored html generate Makefile up
+.PHONY: help install copy-images apidoc clean html generate Makefile up
 
 # Copy images before running any Sphinx command (except for help)
 copy-images:
@@ -58,24 +53,23 @@ generate-readmes:
 
 generate: generate-apidoc generate-yaml-index generate-ansible-roles generate-readmes
 
+#extract-requirements:
+#    @echo "Creating requirement files"
+#    - python ./scripts/extract-requirements.py "$(SPHINX_EXEC_DIR)/requirements.yml" "$(SPHINX_REQUIREMENTS_DIR)"
 
-clean-ignored:
+clean:
 	@echo "Removing generated files..."
 	- git clean -fdX
 
 help:
-	@$(SPHINX_BUILD_COMMAND) -M help "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS) $(O)
+	- sphinx-build -M help "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS) $(O)
 
 html: copy-images generate
 	@echo "Building Sphinx documentation..."
-	$(SPHINX_BUILD_COMMAND) -M html "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS)
+	- sphinx-build -M html "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS)
 
 just-html:
-	@$(SPHINX_BUILD_COMMAND) -M html "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS)
-
-
-clean: clean-ignored
-	@$(SPHINX_BUILD_COMMAND) -M clean "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS) $(O)
+	- sphinx-build -M html "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS)
 
 up: install	
 	- docker compose up -d --force-recreate --build
@@ -83,4 +77,4 @@ up: install
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option. $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINX_BUILD_COMMAND) -M $@ "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS) $(O)
+	- sphinx-build -M $@ "$(SPHINX_SOURCE_DIR)" "$(SPHINX_OUTPUT_DIR)" $(SPHINXOPTS) $(O)
