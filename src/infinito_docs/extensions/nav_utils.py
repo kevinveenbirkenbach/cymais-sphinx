@@ -1,6 +1,5 @@
 import os
 import re
-import yaml
 
 DEFAULT_MAX_NAV_DEPTH = 4
 MAX_HEADING_LEVEL = 0  # This can be overridden in your configuration

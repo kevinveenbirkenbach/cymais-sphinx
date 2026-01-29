@@ -1,9 +1,7 @@
 import os
 import sys
 import logging as std_logging  # Use the standard logging module
-from sphinx.util import logging  # Sphinx logging is used elsewhere if needed
-from docutils.parsers.rst import Directive
-from .nav_utils import natural_sort_key, extract_headings_from_file, group_headings, sort_tree, MAX_HEADING_LEVEL, DEFAULT_MAX_NAV_DEPTH
+from .nav_utils import extract_headings_from_file, group_headings, sort_tree, MAX_HEADING_LEVEL, DEFAULT_MAX_NAV_DEPTH
 
 # Set up our logger based on command-line args.
 logger = std_logging.getLogger(__name__)

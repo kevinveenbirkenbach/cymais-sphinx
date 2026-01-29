@@ -1,4 +1,4 @@
-ARG INFINITO_IMAGE_REPO=ghcr.io/kevinveenbirkenbach/infinito-sphinx
+ARG INFINITO_IMAGE_REPO=ghcr.io/kevinveenbirkenbach/infinito-arch
 ARG INFINITO_IMAGE_TAG=latest
 
 FROM ${INFINITO_IMAGE_REPO}:${INFINITO_IMAGE_TAG} AS full

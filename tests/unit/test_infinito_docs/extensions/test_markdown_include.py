@@ -3,7 +3,6 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from types import SimpleNamespace
-from unittest.mock import MagicMock
 
 
 def _add_src_to_path() -> None:
