@@ -7,3 +7,5 @@ generated/*
 source/*
 !source/.gitkeep
 *__pycache__
+*.egg-info
+build/

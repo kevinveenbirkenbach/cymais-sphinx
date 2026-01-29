@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "infinito-sphinx"
-version = "1.0.8"
+version = "1.0.9"
 description = "Infinito.Nexus documentation generator based on Sphinx."
 readme = "README.md"
 requires-python = ">=3.9"
