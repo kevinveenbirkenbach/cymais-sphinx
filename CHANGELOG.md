@@ -1,3 +1,8 @@
+## [1.0.50] - 2026-02-24
+
+* Removed unused pytest
+
+
 ## [1.0.9] - 2026-01-15
 
 * Patched falsy docker image
